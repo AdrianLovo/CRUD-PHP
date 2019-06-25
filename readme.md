@@ -1,9 +1,9 @@
 # Tecnologias Utilizadas
-		- PHP 7
-		- Mysql 5.7
+	- PHP 7
+	- Mysql 5.7
 
 # Arquitetura de el Proyecto
-		-1. Modelo Vista Controlador (MVC)
+	-1. Modelo Vista Controlador (MVC)
 	
 # Patrones de diseño de Software Utilizados
 
