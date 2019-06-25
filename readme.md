@@ -1,6 +1,3 @@
-
-<center> # Proyecto CRUD PHP </center>
-	
 # Tecnologias Utilizadas
 		- PHP 7
 		- Mysql 5.7
