@@ -1,0 +1,7 @@
+#Archivos y carpetas ignorados al realizar commit
+
+Controller/
+DAO/
+Entidades/
+Logs/
+Vista/
