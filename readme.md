@@ -1,5 +1,5 @@
 
-# Proyecto CRUD PHP
+<center> # Proyecto CRUD PHP </center>
 	
 # Tecnologias Utilizadas
 		- PHP 7
