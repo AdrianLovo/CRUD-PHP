@@ -1,7 +1,6 @@
 #Archivos y carpetas ignorados al realizar commit
 
 Controller/
-DAO/
+DAO/main.php
 Entidades/
-Logs/
 Vista/
