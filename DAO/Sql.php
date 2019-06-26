@@ -76,8 +76,10 @@
 		public function eliminar($parametro) {
 			$pdo = $this->conectar();
 			try{
+				$pdo->beginTransaction();
 				$statement = $pdo->prepare($this->queryEliminar());
 				$filasAfectadas = $this->metodoEliminar($statement, $parametro);
+				$pdo->commit();
 				return $filasAfectadas;
 			}catch(Exception $e){
 				LogError::guardarLog("Sql.log", $e->getMessage(), $e->getCode(), $e->getFile(), $e->getLine());
