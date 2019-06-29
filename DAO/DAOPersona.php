@@ -5,8 +5,8 @@
 	* https://github.com/AdrianLovo/CRUD-PHP
 	*/
 	
-	require_once("Sql.php");
-	require_once("../Entidades/Persona.php");
+	require_once("DAO.php");
+	require_once("../Modelos/Persona.php");
 
 	class DAOPersona extends Sql{
 	
@@ -19,15 +19,7 @@
 			$arrayDeObjetos = array();
 			if(!empty($resultSet)){
 				foreach($resultSet as $fila){
-					$a = new Persona(
-							$fila["idPersona"], 
-							$fila["nombre"], 
-							$fila["apellido"], 
-							$fila["edad"], 
-							$fila["genero"], 
-							$fila["fechaNac"], 
-							$fila["imagen"]
-						);
+					$a = new Persona($fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6]);
 					array_push($arrayDeObjetos, $a);
 				}	
 			}	
@@ -40,14 +32,8 @@
 		}
 
 		public function metodoAgregar($statement, $parametro){
-			$statement->execute([
-					$parametro->getNombre(), 
-					$parametro->getApellido() , 
-					$parametro->getEdad(), 
-					$parametro->getGenero(), 
-					$parametro->getFechaNac(), 
-					$parametro->getImagen() 
-				]);
+			$datos = $parametro->toArray();
+			$statement->execute([$datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6]]);
 			$filasAfectadas = $statement->rowCount();
 			return $filasAfectadas;
 		}
@@ -69,15 +55,8 @@
 		}
 
 		public function metodoModificar($statement, $parametro){
-			$statement->execute([
-					$parametro->getNombre(), 
-					$parametro->getApellido(), 
-					$parametro->getEdad(), 
-					$parametro->getGenero(), 
-					$parametro->getFechaNac(),
-					$parametro->getImagen(),
-					$parametro->getIdPersona(),
-				]);
+			$datos = $parametro->toArray();
+			$statement->execute([$datos[1],$datos[2],$datos[3],$datos[4],$datos[5],$datos[6], $datos[0]]);
 			$filasAfectadas = $statement->rowCount();
 			return $filasAfectadas;
 		}
@@ -96,21 +75,12 @@
 			$arrayDeObjetos = array();
 			if(!empty($resultSet)){
 				foreach($resultSet as $fila){
-					$a = new Persona(
-							$fila["idPersona"], 
-							$fila["nombre"], 
-							$fila["apellido"], 
-							$fila["edad"], 
-							$fila["genero"], 
-							$fila["fechaNac"], 
-							$fila["imagen"]
-						);
+					$a = new Persona($fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6]);
 					array_push($arrayDeObjetos, $a);
 				}	
 			}
 			return $arrayDeObjetos;
 		}
-
 				
 	}
 

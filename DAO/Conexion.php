@@ -21,7 +21,7 @@
 		public function conectar(){
 			try{
 				$cadena = "mysql:host=".$this->host.";dbname=".$this->bd;
-				$this->pdo = new PDO($cadena, $this->user, $this->pass, array(PDO::ATTR_PERSISTENT => true));	
+				$this->pdo = new PDO($cadena, $this->user, $this->pass);	
 				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				return $this->pdo;		
 			}catch(Exception $e){
