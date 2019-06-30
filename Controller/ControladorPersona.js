@@ -1,5 +1,7 @@
+//document.getElementById("Nuevo").addEventListener("click", myFunction);
+
 $(document).ready(function(){
-	listar();				
+	listar();
 });
 
 function listar(){
@@ -15,10 +17,37 @@ function listar(){
 			$('#datatable').DataTable().clear();
 			for (var i = 0; i < myJSON.length; i++) {
 				$("#datatable").DataTable().row.add([
-					(i+1), myJSON[i].nombre, myJSON[i].apellido, myJSON[i].edad, myJSON[i].genero, myJSON[i].fechaNac, myJSON[i].imagen, 
-					"<a data-toggle='tooltip' data-original-title='Edit' class='edit btn btn-primary btn-sm'>Edit</a> <a data-toggle='tooltip' data-original-title='Delete' class='btn btn-danger btn-sm'>Delete</a>"
+					"<p class='"+i+"'>"+myJSON[i].idPersona	+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].nombre	+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].apellido	+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].edad		+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].genero	+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].fechaNac	+" </p>",	
+					"<p class='"+i+"'>"+myJSON[i].imagen	+" </p>",	
+					"<a data-original-title='Edit' class='btn btn-warning btn-sm' id='"+i+"' onclick='Modificar(this.id)'>Edit</a> " +
+				    "<a data-original-title='Delete' class='btn btn-danger btn-sm'>Delete</a>"
 				]).draw();
             }	            
 		}
 	});	
 }
+
+function Modificar(id) {
+	var Datos = [];
+	$("."+id).each(function(){
+		Datos.push($(this).text().trim());
+	});
+	$("#Modificar").modal("show");
+	$("#inputId").val(Datos[0]);
+	$("#inputNombre").val(Datos[1]);
+	$("#inputApellido").val(Datos[2]);
+	$("#inputEdad").val(Datos[3]);
+	if(Datos[4] == "F"){
+		$("#inputGenero option[value='F']").attr("selected", true);
+	}else{
+		$("#inputGenero option[value='M']").attr("selected", true);
+	}
+
+	
+
+} 
