@@ -4,7 +4,7 @@
 
 
 
-## Arquitetura de el Proyecto
+## Arquitetura del Proyecto
 	1. Modelo Vista Controlador (MVC)
 	2. Data Acces Object (DAO)
 	
