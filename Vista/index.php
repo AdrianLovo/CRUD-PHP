@@ -7,6 +7,8 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="alertify/css/alertify.min.css">
+
 </head>
 
 
@@ -28,17 +30,11 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-success">Save changes</button>
 	      </div>
 	    </div>
 	  </div>	  
 	</div>
-
-
-
-
-
-
 
 
 	<!-- Modal Modificar Registro-->
@@ -109,7 +105,7 @@
 	<div class="container">
 	    <center><p><h1>PHP, Ajax CRUD Datatable</h1></p></center>
 	    
-	    <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	    <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
 		  Agregar Nuevo Registro
 		</button></p>
 
@@ -136,8 +132,10 @@
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+
     <!-- Controlador -->
     <script type="text/javascript" src="../Controller/ControladorPersona.js"></script>
+    <script type="text/javascript" src="alertify/alertify.min.js"></script>
 
    
 

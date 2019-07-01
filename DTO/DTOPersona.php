@@ -8,15 +8,24 @@
 	require_once("../DAO/DAOPersona.php");
 	require_once("../Modelos/Persona.php");
 
-	$Funcion = $_POST['Funcion'];
+	//Validar Existencia de variables POST
+	if(isset($_POST['Funcion'])){
+		$Funcion = $_POST['Funcion'];
+	}
+	if(isset($_POST['idPersona'])){
+		$idPersona = $_POST['idPersona'];
+	}
+	
 
 	switch ($Funcion) {
-		case 1: listar();
-			break;		
+		case 1: Listar();
+			break;	
+		case 2: Eliminar($idPersona);
+			break;	
 	}
 
 	//Listar
-	function listar(){
+	function Listar(){
 		$datosTodos = array();
 		$daoPersona = new DAOPersona();
 
@@ -36,6 +45,11 @@
 		echo json_encode($datosTodos);	
 	}
 	
+	//Eliminar
+	function Eliminar($idPersona){
+		$daoPersona = new DAOPersona();
+		echo($daoPersona->eliminar($idPersona));
+	}
 
 
 
