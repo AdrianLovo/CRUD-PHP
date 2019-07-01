@@ -1,6 +1,5 @@
 #Archivos y carpetas ignorados al realizar commit
 
 DAO/main.php
-Vista/css
 Vista/js
 

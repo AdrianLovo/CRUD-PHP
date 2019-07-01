@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 
@@ -22,15 +23,23 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        ...
+	      
+	      	
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary">Save changes</button>
 	      </div>
 	    </div>
-	  </div>
+	  </div>	  
 	</div>
+
+
+
+
+
+
+
 
 	<!-- Modal Modificar Registro-->
 	<div class="modal fade" id="Modificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,22 +62,21 @@
 	      	<div class="form-group row">
 			    <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+			      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" maxlength="50">
 			    </div>
 		  	</div>
 		  	<div class="form-group row">
 			    <label for="inputApellido" class="col-sm-2 col-form-label">Apellido</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputApellido" placeholder="Apellido">
+			      <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" maxlength="50">
 			    </div>
 		  	</div>
 		  	<div class="form-group row">
 			    <label for="inputEdad" class="col-sm-2 col-form-label">Edad</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="inputEdad" placeholder="Edad">
+			      <input type="number" class="form-control" id="inputEdad" placeholder="Edad">
 			    </div>
 		  	</div>
-
 		  	<div class="form-group row">
 			    <label for="inputGenero" class="col-sm-2 col-form-label">Genero</label>
 			    <div class="col-sm-10">
@@ -78,20 +86,26 @@
 			      </select>
 			    </div>
 		  	</div>
-
-		  	
+		  	<div class="form-group row">
+			    <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha</label>
+			    <div class="col-sm-10">
+			      <input type="date" id="inputFechaNac" name="inputFechaNac" style="width: 100%;" min="1900-01-01" max="2050-12-31">
+			    </div>
+		  	</div>		  	
 
 
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-	        <button type="button" class="btn btn-primary">Modificar</button>
+	        <button type="button" class="btn btn-primary">Guardar Cambios</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
-    
+
+
+	<!-- Div principa con DataTable-->
 	<div class="container">
 	    <center><p><h1>PHP, Ajax CRUD Datatable</h1></p></center>
 	    
@@ -108,8 +122,7 @@
 	                <th>Edad</th>
 	                <th>Genero</th>
 	                <th>Fecha Nacimiento</th>
-	                <th>Imagen</th>
-	                <th style="width:80px">Action</th>
+	                <th style="width:100px">Action</th>
 	            </tr>
 	        </thead>
 	        <tbody>
