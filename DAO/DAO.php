@@ -54,8 +54,9 @@
 			$pdo = $this->conectar();
 			try{
 				$statement = $pdo->prepare($this->queryAgregar());
-				$filasAfectadas = $this->metodoAgregar($statement, $parametro);		
-				return $filasAfectadas;
+				$this->metodoAgregar($statement, $parametro);	
+				$idGenerado = $pdo->lastInsertId(); 
+				return $idGenerado;
 			}catch(PDOException $e){
 				$pdo->rollBack();
 				LogError::guardarLog("Sql.log", $e->getMessage(), $e->getCode(), $e->getFile(), $e->getLine());
@@ -119,7 +120,6 @@
 				$this->desconectar();
 				return $arrayDeObjetos;
 			} catch (Exception $e) {
-				echo($e);
 				LogErro::guardarLog("Sql.log", $e->getMessage(), $e->getCode(), $e->getFile(), $e->getLine());
 			}finally{
 				$this->desconectar();

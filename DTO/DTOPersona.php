@@ -31,6 +31,7 @@
 			break;
 	}
 
+
 	function Listar(){
 		$datosTodos = array();
 		$daoPersona = new DAOPersona();
@@ -56,13 +57,15 @@
 		if($ruta != ""){			
 			$persona->setImagen($ruta);
 			$daoPersona = new DAOPersona();
-			echo($daoPersona->agregar($persona));
+			echo ($daoPersona->agregar($persona));		
+		}else{
+			echo (0);
 		}
 	}
 	
 	function Eliminar($idPersona){
 		$daoPersona = new DAOPersona();
-		echo($daoPersona->eliminar($idPersona));
+		echo ($daoPersona->eliminar($idPersona));
 	}
 
 	function Modificar($persona){

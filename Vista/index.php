@@ -96,6 +96,13 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
+
+	      	<div class="form-group row" style="display: none">
+			    <label for="modInputFila" class="col-sm-2 col-form-label">Fila</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="modInputFila" placeholder="Fila" readonly>
+			    </div>
+		  	</div>
 	        
 	        <div class="form-group row">
 			    <label for="modInputId" class="col-sm-2 col-form-label">Id</label>
@@ -148,10 +155,7 @@
 
 	<!-- Div principa con DataTable-->
 	<div class="container">
-		
-
-
-	    <center><p><h1>PHP, Ajax CRUD Datatable</h1></p></center>
+		<center><p><h1>PHP, Ajax CRUD Datatable</h1></p></center>
 	    
 	    <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar">
 		  Agregar Nuevo Registro
@@ -173,7 +177,6 @@
 	        </tbody>
 	    </table>
 	</div>
-		
 
 	    
 </body>
@@ -181,11 +184,8 @@
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
     <!-- Controlador -->
     <script type="text/javascript" src="../Controller/ControladorPersona.js"></script>
     <script type="text/javascript" src="alertify/alertify.min.js"></script>
-
-   
 
 </html>

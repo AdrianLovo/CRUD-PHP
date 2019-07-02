@@ -33,9 +33,7 @@
 
 		public function metodoAgregar($statement, $parametro){
 			$datos = $parametro->toArray();
-			$statement->execute([$datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6]]);
-			$filasAfectadas = $statement->rowCount();
-			return $filasAfectadas;
+			$statement->execute([$datos[1], $datos[2], $datos[3], $datos[4], $datos[5], $datos[6]]);			
 		}
 
 		public function queryEliminar(){
