@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	listar();	
+	listar();
 });
 
 function listar(){
@@ -29,8 +29,35 @@ function listar(){
 	});	
 }
 
+function Agregar(){
+	ValidarTipoArchivo();
+
+	$("#newForm").on('submit',function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '../DTO/DTOPersona.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(respuesta){
+            	if(respuesta.trim() == 1){
+                    alertify.success('Registro Agregado');
+                    $('#newForm')[0].reset();
+                    $("#ModalAgregar").modal("hide");
+                    $('#datatable').DataTable().clear();
+                    listar();
+                }else{
+                	alertify.error('Error al agregar Registro');
+                }
+            }
+        });
+    });
+}
+
 function Eliminar(id){
-	datos = {"Funcion": 2, "idPersona": id};
+	datos = {"Funcion": 3, "idPersona": id};
 
 	$.ajax({
 		url: "../DTO/DTOPersona.php",
@@ -51,37 +78,15 @@ function Eliminar(id){
 	});	
 }
 
-function EnviarModal(id) {
-	var Datos = [];
-
-	//Obtenemos la fila seleccionada a Editar y almacenaos los datos en un array
-	$("."+id).each(function(){
-		Datos.push($(this).text().trim());
-	});
-
-	$("#Modificar").modal("show");
-	$("#inputId").val(Datos[0]);
-	$("#inputNombre").val(Datos[1]);
-	$("#inputApellido").val(Datos[2]);
-	$("#inputEdad").val(Datos[3]);
-	if(Datos[4] == "F"){
-		$("#inputGenero option[value='F']").attr("selected", true);
-	}else{
-		$("#inputGenero option[value='M']").attr("selected", true);
-	}
-	$("#inputFechaNac").val(Datos[5]);
-} 
-
 function Modificar(){
-	var idPersona = $("#inputId").val();
-	var nombre = $("#inputNombre").val();
-	var apellido = $("#inputApellido").val();
-	var edad = $("#inputEdad").val();
-	var genero = $('#inputGenero').val();
-	var fechaNac =$("#inputFechaNac").val();
+	var idPersona = $("#modInputId").val();
+	var nombre = $("#modInputNombre").val();
+	var apellido = $("#modInputApellido").val();
+	var edad = $("#modInputEdad").val();
+	var genero = $('#modInputGenero').val();
+	var fechaNac =$("#modInputFechaNac").val();
 	
-	datos = {"Funcion": 3, "idPersona": idPersona, "nombre": nombre, 
-				"apellido": apellido, "edad": edad, "genero": genero, "fechaNac": fechaNac};
+	datos = {"Funcion": 4, "idPersona": idPersona, "nombre": nombre, "apellido": apellido, "edad": edad, "genero": genero, "fechaNac": fechaNac};
 
 	$.ajax({
 		url: "../DTO/DTOPersona.php",
@@ -91,12 +96,45 @@ function Modificar(){
 		success: function(respuesta) {
 			if(respuesta.trim() == 1){
 				alertify.success('Registro Modificado');
-				$("#Modificar").modal("hide");
+				$("#ModalModificar").modal("hide");
 			}
 		},
 		error: function() {
 			alertify.error('Error al modificar el Registro');        	
     	}
 	});
-
 }
+
+function ValidarTipoArchivo(){
+	$("#file").change(function() {
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
+            alertify.error('Selecciona un formato valido (JPEG/JPG/PNG)');    
+            $("#file").val('');
+            return false;
+        }
+    });
+}
+
+function EnviarModal(id) {
+	var Datos = [];
+
+	//Obtenemos la fila seleccionada a Editar y almacenaos los datos en un array
+	$("."+id).each(function(){
+		Datos.push($(this).text().trim());
+	});
+
+	$("#ModalModificar").modal("show");
+	$("#modInputId").val(Datos[0]);
+	$("#modInputNombre").val(Datos[1]);
+	$("#modInputApellido").val(Datos[2]);
+	$("#modInputEdad").val(Datos[3]);
+	if(Datos[4] == "F"){
+		$("#modInputGenero option[value='F']").attr("selected", true);
+	}else{
+		$("#modInputGenero option[value='M']").attr("selected", true);
+	}
+	$("#modInputFechaNac").val(Datos[5]);
+} 
