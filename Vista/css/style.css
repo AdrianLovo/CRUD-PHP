@@ -2,3 +2,41 @@
 	width: 55px;	
 	border-radius: 0px;	
 }
+
+body {
+	margin:0;
+	padding:40px;
+	background:#fff;
+	font:90% Arial, Helvetica, sans-serif;
+	color:black;
+	line-height:100%;
+}
+
+h1{
+	font-size:180%;
+	font-weight:normal;
+	color:#555;
+}
+a{
+	text-decoration:none;
+	color:#f30;	
+}
+p{
+	clear:both;
+	margin:0;
+	padding:.5em 0;
+}
+
+img{border:none;}
+
+#screenshot{
+	position: absolute;
+	border-radius: 10px;
+	border:2px solid #FFFFFF;
+	background: black;
+	opacity: 0.85;
+	padding: 5px;
+	display: none;
+	color: white;
+}
+

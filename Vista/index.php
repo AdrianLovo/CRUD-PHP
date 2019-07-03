@@ -8,7 +8,8 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="alertify/css/alertify.min.css">
-  
+
+
 </head>
 
 
@@ -156,7 +157,7 @@
 	<!-- Div principa con DataTable-->
 	<div class="container">
 		<center><p><h1>PHP, Ajax CRUD Datatable</h1></p></center>
-	    
+
 	    <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar">
 		  Agregar Nuevo Registro
 		</button></p>
@@ -187,5 +188,8 @@
     <!-- Controlador -->
     <script type="text/javascript" src="../Controller/ControladorPersona.js"></script>
     <script type="text/javascript" src="alertify/alertify.min.js"></script>
+    <script type="text/javascript" src="js/TooltipImg.js"></script>
+
+   
 
 </html>

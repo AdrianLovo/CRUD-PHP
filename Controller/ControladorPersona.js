@@ -18,7 +18,7 @@ function Listar(){
 			for (var i = 0; i < myJSON.length; i++) {
 				$("#datatable").DataTable().row.add([
 					"<p class='"+i+"'>"+ myJSON[i].idPersona	+" </p>",	
-					"<p class='"+i+"'>"+ myJSON[i].nombre		+" </p>",	
+					"<p class='"+i+"'> <a class='screenshot' rel='"+ myJSON[i].imagen +"'>" + myJSON[i].nombre + "</a></p>",
 					"<p class='"+i+"'>"+ myJSON[i].apellido		+" </p>",	
 					"<p class='"+i+"'>"+ myJSON[i].edad			+" </p>",	
 					"<p class='"+i+"'>"+ myJSON[i].genero		+" </p>",	
