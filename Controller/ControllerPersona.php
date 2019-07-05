@@ -57,10 +57,12 @@
 		if($ruta != ""){			
 			$persona->setImagen($ruta);
 			$daoPersona = new DAOPersona();
-			echo ($daoPersona->agregar($persona));		
+			$idGenerado = $daoPersona->agregar($persona);	
+			$datos = array('IdGenerado' => $idGenerado, 'Imagen' => $ruta);
 		}else{
-			echo (0);
+			$datos = array('IdGenerado' => '', 'Ruta' => '');
 		}
+		echo json_encode($datos);
 	}
 	
 	function Eliminar($idPersona){

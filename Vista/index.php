@@ -104,6 +104,13 @@
 			      <input type="text" class="form-control" id="modInputFila" placeholder="Fila" readonly>
 			    </div>
 		  	</div>
+
+		  	<div class="form-group row" style="display: none">
+			    <label for="modInputImagen" class="col-sm-2 col-form-label">Imagen</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="modInputImagen" placeholder="Imagen" readonly>
+			    </div>
+		  	</div>
 	        
 	        <div class="form-group row">
 			    <label for="modInputId" class="col-sm-2 col-form-label">Id</label>

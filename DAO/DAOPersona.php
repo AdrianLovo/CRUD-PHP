@@ -27,7 +27,7 @@
 		}
 
 		public function queryAgregar(){
-			$query = "INSERT INTO bdcrud.persona (nombre, apellido, edad, genero, fechaNac, imagen) VALUES(?, ?, ?, ?, ?, ?)";			
+			$query = "INSERT INTO bdcrud.persona (nombre, apellido, edad, genero, fechaNac) VALUES(?, ?, ?, ?, ?, ?)";			
 			return $query;
 		}
 
@@ -48,13 +48,13 @@
 		}
 
 		public function queryModificar(){
-			$query = "UPDATE bdcrud.persona SET nombre=?, apellido=?, edad=?, genero=?, fechaNac=?, imagen=? WHERE idPersona=?";
+			$query = "UPDATE bdcrud.persona SET nombre=?, apellido=?, edad=?, genero=?, fechaNac=? WHERE idPersona=?";
 			return $query;
 		}
 
 		public function metodoModificar($statement, $parametro){
 			$datos = $parametro->toArray();
-			$statement->execute([$datos[1],$datos[2],$datos[3],$datos[4],$datos[5],$datos[6], $datos[0]]);
+			$statement->execute([$datos[1],$datos[2],$datos[3],$datos[4],$datos[5], $datos[0]]);
 			$filasAfectadas = $statement->rowCount();
 			return $filasAfectadas;
 		}

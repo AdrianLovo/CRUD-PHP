@@ -24,7 +24,7 @@ function Listar(){
 					"<p class='"+i+"'>"+ myJSON[i].edad			+" </p>",	
 					"<p class='"+i+"'>"+ myJSON[i].genero		+" </p>",	
 					"<p class='"+i+"'>"+ myJSON[i].fechaNac		+" </p>",	
-					"<a class='btn btn-warning btn-sm btnTable' id='"+ i +"' onclick='EnviarModal(this.id)'>Edit</a>" +
+					"<a class='btn btn-warning btn-sm btnTable' id='"+ i +"?" + myJSON[i].imagen + "' onclick='EnviarModal(this.id)'>Edit</a>" +
 				    "<a class='btn btn-danger btn-sm btnTable' id='"+ myJSON[i].idPersona +"'  onclick='Eliminar(this.id)'>Delete</a>"
 				]).draw();
             }	            
@@ -45,10 +45,11 @@ function Agregar(){
             cache: false,
             processData:false,
             success: function(respuesta){
-            	if(respuesta > 0){
+            	var myJSON = JSON.parse(respuesta);
+				if(myJSON.IdGenerado > 0){
                     alertify.success('Registro Agregado');
                     $("#ModalAgregar").modal("hide");
-                    AgregarFila(respuesta);                    
+                    AgregarFila(myJSON.IdGenerado, myJSON.Imagen);                    
                 }else{
                 	alertify.error('Error al agregar Registro');
                 }
@@ -86,14 +87,9 @@ function Modificar(){
 	var apellido = $("#modInputApellido").val();
 	var edad = $("#modInputEdad").val();
 	var genero = $('#modInputGenero').val();
-	var fechaNac =$("#modInputFechaNac").val();
+	var fechaNac = $("#modInputFechaNac").val();
+	var imagen = $("#modInputImagen").val();
 
-	$("#datatable").DataTable().cell(fila, 1).data(nombre);
-	$("#datatable").DataTable().cell(fila, 2).data(apellido);
-	$("#datatable").DataTable().cell(fila, 3).data(edad);
-	$("#datatable").DataTable().cell(fila, 4).data(genero);
-	$("#datatable").DataTable().cell(fila, 5).data(fechaNac);
-	
 	datos = {"Funcion": 4, "idPersona": idPersona, "nombre": nombre, "apellido": apellido, "edad": edad, "genero": genero, "fechaNac": fechaNac};
 
 	$.ajax({
@@ -103,6 +99,18 @@ function Modificar(){
 		async: false,
 		success: function(respuesta) {
 			if(respuesta.trim() == 1){
+				nombre = "<p class='"+fila+"'> <a class='screenshot' rel='"+ imagen +"'>" + nombre + "</a></p>";
+				apellido = "<p class='"+fila+"'>"+ apellido	+" </p>";
+				edad = "<p class='"+fila+"'>"+ edad +" </p>";
+				genero = "<p class='"+fila+"'>"+ genero +" </p>";
+				fechaNac = "<p class='"+fila+"'>"+ fechaNac +" </p>";
+
+				$("#datatable").DataTable().cell(fila, 1).data(nombre);
+				$("#datatable").DataTable().cell(fila, 2).data(apellido);
+				$("#datatable").DataTable().cell(fila, 3).data(edad);
+				$("#datatable").DataTable().cell(fila, 4).data(genero);
+				$("#datatable").DataTable().cell(fila, 5).data(fechaNac);
+
 				alertify.success('Registro Modificado');
 				$("#ModalModificar").modal("hide");
 			}
@@ -111,15 +119,19 @@ function Modificar(){
 			alertify.error('Error al modificar el Registro');        	
     	}
 	});
+	screenshotPreview();
 }
 
 
 // Funciones auxiliares
 function EnviarModal(id) {
 	var Datos = [];
+	var Parametros = id.split("?");
+	var fila = Parametros[0];
+	var imagen = Parametros[1];
 
 	//Obtenemos la fila seleccionada a Editar y almacenaos los datos en un array
-	$("."+id).each(function(){
+	$("."+fila).each(function(){
 		Datos.push($(this).text().trim());
 	});
 
@@ -134,14 +146,15 @@ function EnviarModal(id) {
 		$("#modInputGenero option[value='M']").attr("selected", true);
 	}
 	$("#modInputFechaNac").val(Datos[5]);
-	$("#modInputFila").val(id);
+	$("#modInputFila").val(fila);
+	$("#modInputImagen").val(imagen);
 } 
 
-function AgregarFila(idGenerado){
+function AgregarFila(idGenerado, imagen){
 	var i = $('#datatable').DataTable().rows().count()
 	$("#datatable").DataTable().row.add([
 		"<p class='"+i+"'>"+ idGenerado +" </p>",	
-		"<p class='"+i+"'>"+ $("#newInputNombre").val() +" </p>",	
+		"<p class='"+i+"'> <a class='screenshot' rel='"+ imagen +"'>" + $("#newInputNombre").val() + "</a></p>",
 		"<p class='"+i+"'>"+ $("#newInputApellido").val() +" </p>",	
 		"<p class='"+i+"'>"+ $("#newInputEdad").val() +" </p>",	
 		"<p class='"+i+"'>"+ $("#newInputGenero").val() +" </p>",	
@@ -149,7 +162,8 @@ function AgregarFila(idGenerado){
 		"<a class='btn btn-warning btn-sm btnTable' id='"+ i +"' onclick='EnviarModal(this.id)'>Edit</a>" +
     	"<a class='btn btn-danger btn-sm btnTable' id='"+ idGenerado +"'  onclick='Eliminar(this.id)'>Delete</a>"
 	]).draw();
-	 $('#newForm')[0].reset();
+	$('#newForm')[0].reset();
+	screenshotPreview();
 }
 
 function ValidarTipoArchivo(){
@@ -164,9 +178,6 @@ function ValidarTipoArchivo(){
         }
     });
 }
-
-
-
  
 function screenshotPreview(){	
 	xOffset = 10;
