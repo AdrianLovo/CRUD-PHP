@@ -27,7 +27,7 @@
 		}
 
 		public function queryAgregar(){
-			$query = "INSERT INTO bdcrud.persona (nombre, apellido, edad, genero, fechaNac) VALUES(?, ?, ?, ?, ?, ?)";			
+			$query = "INSERT INTO bdcrud.persona (nombre, apellido, edad, genero, fechaNac, imagen) VALUES(?, ?, ?, ?, ?, ?)";			
 			return $query;
 		}
 
