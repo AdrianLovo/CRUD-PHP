@@ -186,7 +186,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- Controlador -->
-    <script type="text/javascript" src="../Controller/ControladorPersona.js"></script>
+    <script type="text/javascript" src="../VistaController/ControladorPersona.js"></script>
     <script type="text/javascript" src="alertify/alertify.min.js"></script>
     <script type="text/javascript" src="js/TooltipImg.js"></script>
 
