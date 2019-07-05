@@ -8,7 +8,7 @@ function Listar(){
     datos = {"Funcion": 1};
 
 	$.ajax({
-		url: "../DTO/DTOPersona.php",
+		url: "../Controller/ControllerPersona.php",
 		type: "POST",
 		data: datos,
 		async: false,
@@ -38,7 +38,7 @@ function Agregar(){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '../DTO/DTOPersona.php',
+            url: '../Controller/ControllerPersona.php',
             data: new FormData(this),
             contentType: false,
             cache: false,
@@ -60,7 +60,7 @@ function Eliminar(id){
 	datos = {"Funcion": 3, "idPersona": id};
 
 	$.ajax({
-		url: "../DTO/DTOPersona.php",
+		url: "../Controller/ControllerPersona.php",
 		type: "POST",
 		data: datos,
 		async: false,
@@ -96,7 +96,7 @@ function Modificar(){
 	datos = {"Funcion": 4, "idPersona": idPersona, "nombre": nombre, "apellido": apellido, "edad": edad, "genero": genero, "fechaNac": fechaNac};
 
 	$.ajax({
-		url: "../DTO/DTOPersona.php",
+		url: "../Controller/ControllerPersona.php",
 		type: "POST",
 		data: datos,
 		async: false,
