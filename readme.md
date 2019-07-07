@@ -13,6 +13,12 @@
 	- Factory Method
 	- Factory Abstract
 	
+## Librerias Utilizadas
+	- Alertify JS
+	- Boostrap 
+	- Jquery
+	- DataTables JS
+	
 
 	
 ![Principal](https://user-images.githubusercontent.com/19199367/60744774-065b9f00-9f3d-11e9-8c12-9c0df11dc644.PNG)
