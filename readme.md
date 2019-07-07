@@ -2,7 +2,7 @@
 	- PHP 7
 	- Mysql 5.7
 
-# Paradigmas de Programacion
+## Paradigmas de Programacion
 	- Programación Orientada a Objetos (POO)
 
 ## Arquitetura del Proyecto
