@@ -19,10 +19,9 @@
 	- Jquery
 	- DataTables JS
 	
+![Caputra1](https://user-images.githubusercontent.com/19199367/62266625-34ba8600-b3e6-11e9-9c2c-72cbd2b90eef.png)	
+![Caputra2](https://user-images.githubusercontent.com/19199367/62266623-34ba8600-b3e6-11e9-9c4f-4cfa4fe85931.png)
+![Caputra3](https://user-images.githubusercontent.com/19199367/62266624-34ba8600-b3e6-11e9-9485-8f294eddceb4.png)
 
-	
-![Principal](https://user-images.githubusercontent.com/19199367/60744774-065b9f00-9f3d-11e9-8c12-9c0df11dc644.PNG)
-![Agregar](https://user-images.githubusercontent.com/19199367/60744771-052a7200-9f3d-11e9-81a0-d8b147d6de8e.PNG)
-![Modificar](https://user-images.githubusercontent.com/19199367/60744772-05c30880-9f3d-11e9-8386-62d71e746025.PNG)
 
 	
